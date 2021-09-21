@@ -5,9 +5,13 @@
  * 'Close' canvas
  * Allow redraw once shown
  * Save as PDf
+ * https://pspdfkit.com/guides/web/viewer/ (ver)
+ * https://luisperis.com/crear-pdf-desde-html-php/ (crear F)
+ * https://anexsoft.com/exportar-html-a-pdf-en-php-de-manera-facil (crear S)
  */
 
 window.addEventListener('load', () => {
+  const firma = document.querySelector('.firma');
   const reset = document.querySelector('.reset');
   const save = document.querySelector('.save');
   const img = document.querySelector('img');
@@ -15,11 +19,11 @@ window.addEventListener('load', () => {
   const context = canvas.getContext('2d');
 
   //   Resizing
-  canvas.height = 0;
-  canvas.width = 0;
+  canvas.height = window.innerHeight - 100;
+  canvas.width = window.innerWidth - 20;
 
   function canvasDefault() {
-    canvas.classList.toggle('hidden');
+    firma.classList.toggle('hidden');
   }
 
   let painting = false;
@@ -55,10 +59,9 @@ window.addEventListener('load', () => {
   canvas.addEventListener('touchmove', draw);
 
   img.addEventListener('click', () => {
-    canvas.classList.remove('hidden');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    canvasDefault();
     img.alt = '';
-    canvas.height = window.innerHeight - 100;
-    canvas.width = window.innerWidth - 20;
   });
 
   // Buttons =======================================
@@ -68,7 +71,13 @@ window.addEventListener('load', () => {
   save.onclick = () => {
     img.src = canvas.toDataURL();
     canvasDefault();
-    canvas.height = 0;
-    canvas.width = 0;
+    sendPdf();
   };
+
+  const sendsrc = document.querySelector('.sendimg');
+  const imgsrc = document.querySelector('.imgsrc');
+  function sendPdf() {
+    imgsrc.value = canvas.toDataURL();
+    sendsrc.submit();
+  }
 });
