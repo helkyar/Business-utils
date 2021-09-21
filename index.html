@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draw App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="firma hidden">
+      <canvas class="canvas"></canvas>
+      <button class="reset">RESET</button>
+      <button class="save">SAVE</button>
+    </div>
+    <img src="" alt="Firma" width="200px" />
+  </body>
+  <!-- Enviar el dibujo como pdf -->
+  <form class="sendimg" action="http://localhost/drawapp/pdf.php" method="POST">
+    <input class="imgsrc" type="hidden" name="imgsrc" />
+  </form>
+  <script src="app.js"></script>
+</html>

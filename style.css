@@ -1,0 +1,16 @@
+.firma {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: white;
+}
+.canvas {
+  border: 1px black solid;
+  margin: 0 auto;
+}
+img {
+  border: 1px black solid;
+}
+.hidden {
+  visibility: hidden;
+}
