@@ -108,7 +108,7 @@ public class TerminalVenta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TPV");
 
-        refrescos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Desktop\\img\\refrescos.jpg")); // NOI18N
+        refrescos.setIcon(new javax.swing.ImageIcon("img/refrescos.jpg")); // NOI18N
         refrescos.setText("Refrescos");
         refrescos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Refrescos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         refrescos.addActionListener(new java.awt.event.ActionListener() {
@@ -117,16 +117,16 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        cafes.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Desktop\\img\\cafes.jpg")); // NOI18N
-        cafes.setText("Cafés");
-        cafes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Café", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        cafes.setIcon(new javax.swing.ImageIcon("img/cafes.jpg")); // NOI18N
+        cafes.setText("CafÃ©s");
+        cafes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CafÃ©", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         cafes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cafesActionPerformed(evt);
             }
         });
 
-        licores.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Desktop\\img\\licores.jpg")); // NOI18N
+        licores.setIcon(new javax.swing.ImageIcon("img/licores.jpg")); // NOI18N
         licores.setText("Licores");
         licores.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Licores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         licores.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        carnes.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Desktop\\img\\carnes.jpg")); // NOI18N
+        carnes.setIcon(new javax.swing.ImageIcon("img/carnes.jpg")); // NOI18N
         carnes.setText("Carnes");
         carnes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carnes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         carnes.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        pescados.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Desktop\\img\\pescados.jpg")); // NOI18N
+        pescados.setIcon(new javax.swing.ImageIcon("img/pescados.jpg")); // NOI18N
         pescados.setText("Pescados");
         pescados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pescados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         pescados.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +153,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        postres.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Desktop\\img\\postres.jpg")); // NOI18N
+        postres.setIcon(new javax.swing.ImageIcon("img/postres.jpg")); // NOI18N
         postres.setText("Postres");
         postres.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Postres", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         postres.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +162,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        cobrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\money.png")); // NOI18N
+        cobrar.setIcon(new javax.swing.ImageIcon("img/money.png")); // NOI18N
         cobrar.setText("Cobrar");
 
         totalInfo.setColumns(20);
@@ -170,7 +170,7 @@ public class TerminalVenta extends javax.swing.JFrame {
         totalInfo.setText("Total: ");
         totalPane.setViewportView(totalInfo);
 
-        cortado.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\coffe.png")); // NOI18N
+        cortado.setIcon(new javax.swing.ImageIcon("img/coffe.png")); // NOI18N
         cortado.setText("Cortado");
         cortado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cortado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -180,7 +180,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        lechado.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\coffe.png")); // NOI18N
+        lechado.setIcon(new javax.swing.ImageIcon("img/coffe.png")); // NOI18N
         lechado.setText("Con leche");
         lechado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lechado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -190,7 +190,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        americano.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\coffe.png")); // NOI18N
+        americano.setIcon(new javax.swing.ImageIcon("img/coffe.png")); // NOI18N
         americano.setText("Americano");
         americano.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         americano.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -200,7 +200,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        manchado.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\coffe.png")); // NOI18N
+        manchado.setIcon(new javax.swing.ImageIcon("img/coffe.png")); // NOI18N
         manchado.setText("Manchado");
         manchado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         manchado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -210,7 +210,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        carajillo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\coffe.png")); // NOI18N
+        carajillo.setIcon(new javax.swing.ImageIcon("img/coffe.png")); // NOI18N
         carajillo.setText("Carajillo");
         carajillo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         carajillo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -254,9 +254,9 @@ public class TerminalVenta extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        articulosPanel.addTab("Cafés", cafesTab);
+        articulosPanel.addTab("CafÃ©s", cafesTab);
 
-        solomillo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\meat.png")); // NOI18N
+        solomillo.setIcon(new javax.swing.ImageIcon("img/meat.png")); // NOI18N
         solomillo.setText("Solomillo");
         solomillo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         solomillo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -266,7 +266,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        entrecot.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\meat.png")); // NOI18N
+        entrecot.setIcon(new javax.swing.ImageIcon("img/meat.png")); // NOI18N
         entrecot.setText("Entrecot");
         entrecot.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         entrecot.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -276,7 +276,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        empanado.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\meat.png")); // NOI18N
+        empanado.setIcon(new javax.swing.ImageIcon("img/meat.png")); // NOI18N
         empanado.setText("Empanado");
         empanado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         empanado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -286,7 +286,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        carpaccio.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\meat.png")); // NOI18N
+        carpaccio.setIcon(new javax.swing.ImageIcon("img/meat.png")); // NOI18N
         carpaccio.setText("Carpaccio");
         carpaccio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         carpaccio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -296,7 +296,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        lomo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\meat.png")); // NOI18N
+        lomo.setIcon(new javax.swing.ImageIcon("img/meat.png")); // NOI18N
         lomo.setText("Lomo");
         lomo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lomo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -342,28 +342,28 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         articulosPanel.addTab("Carnes", carnesTab);
 
-        lubina.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\fish.png")); // NOI18N
+        lubina.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
         lubina.setText("Lubina");
         lubina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lubina.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        merluza.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\fish.png")); // NOI18N
+        merluza.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
         merluza.setText("Merluza");
         merluza.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         merluza.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        bacalao.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\fish.png")); // NOI18N
+        bacalao.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
         bacalao.setText("Bacalao");
         bacalao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bacalao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        atun.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\fish.png")); // NOI18N
-        atun.setText("Atún");
+        atun.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
+        atun.setText("AtÃºn");
         atun.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         atun.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        salmon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\fish.png")); // NOI18N
-        salmon.setText("Salmón");
+        salmon.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
+        salmon.setText("SalmÃ³n");
         salmon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salmon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -402,7 +402,7 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         articulosPanel.addTab("Pescados", pescadosTab);
 
-        helado.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\postres.png")); // NOI18N
+        helado.setIcon(new javax.swing.ImageIcon("img/postres.png")); // NOI18N
         helado.setText("Helado");
         helado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         helado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -412,7 +412,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        gelatina.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\postres.png")); // NOI18N
+        gelatina.setIcon(new javax.swing.ImageIcon("img/postres.png")); // NOI18N
         gelatina.setText("Gelatina");
         gelatina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gelatina.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -422,7 +422,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        flan.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\postres.png")); // NOI18N
+        flan.setIcon(new javax.swing.ImageIcon("img/postres.png")); // NOI18N
         flan.setText("Flan");
         flan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         flan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -432,7 +432,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        tarta.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\postres.png")); // NOI18N
+        tarta.setIcon(new javax.swing.ImageIcon("img/postres.png")); // NOI18N
         tarta.setText("Tarta");
         tarta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tarta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -442,7 +442,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        fruta.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\postres.png")); // NOI18N
+        fruta.setIcon(new javax.swing.ImageIcon("img/postres.png")); // NOI18N
         fruta.setText("Fruta");
         fruta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         fruta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -491,7 +491,7 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         refrescosTab.setAutoscrolls(true);
 
-        artCola.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\refresh.png")); // NOI18N
+        artCola.setIcon(new javax.swing.ImageIcon("img/refresh.png")); // NOI18N
         artCola.setText("Cola");
         artCola.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         artCola.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -501,8 +501,8 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        artTonica.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\refresh.png")); // NOI18N
-        artTonica.setText("Tónica");
+        artTonica.setIcon(new javax.swing.ImageIcon("img/refresh.png")); // NOI18N
+        artTonica.setText("TÃ³nica");
         artTonica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         artTonica.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         artTonica.addActionListener(new java.awt.event.ActionListener() {
@@ -511,7 +511,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        artFanta.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\refresh.png")); // NOI18N
+        artFanta.setIcon(new javax.swing.ImageIcon("img/refresh.png")); // NOI18N
         artFanta.setText("Fanta");
         artFanta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         artFanta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -521,7 +521,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        artAgua.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\refresh.png")); // NOI18N
+        artAgua.setIcon(new javax.swing.ImageIcon("img/refresh.png")); // NOI18N
         artAgua.setText("Agua");
         artAgua.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         artAgua.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -531,7 +531,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        artAcuarius.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\refresh.png")); // NOI18N
+        artAcuarius.setIcon(new javax.swing.ImageIcon("img/refresh.png")); // NOI18N
         artAcuarius.setText("Acuarius");
         artAcuarius.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         artAcuarius.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -576,7 +576,7 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         articulosPanel.addTab("Refrescos", refrescosTab);
 
-        hierbas.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\licores.png")); // NOI18N
+        hierbas.setIcon(new javax.swing.ImageIcon("img/licores.png")); // NOI18N
         hierbas.setText("Hierbas");
         hierbas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         hierbas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -586,7 +586,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        ginebra.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\licores.png")); // NOI18N
+        ginebra.setIcon(new javax.swing.ImageIcon("img/licores.png")); // NOI18N
         ginebra.setText("Ginebra");
         ginebra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ginebra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -596,7 +596,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        wiskey.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\licores.png")); // NOI18N
+        wiskey.setIcon(new javax.swing.ImageIcon("img/licores.png")); // NOI18N
         wiskey.setText("Whiskey");
         wiskey.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         wiskey.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -606,7 +606,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        ron.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\licores.png")); // NOI18N
+        ron.setIcon(new javax.swing.ImageIcon("img/licores.png")); // NOI18N
         ron.setText("Ron");
         ron.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ron.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -616,7 +616,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
         });
 
-        brandy.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Downloads\\licores.png")); // NOI18N
+        brandy.setIcon(new javax.swing.ImageIcon("img/licores.png")); // NOI18N
         brandy.setText("Brandy");
         brandy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         brandy.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -665,7 +665,7 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         articulosPanel.addTab("Licores", licoresTab);
 
-        exit.setIcon(new javax.swing.ImageIcon("C:\\Users\\Academia\\Desktop\\F Dual\\22-09\\exit.png")); // NOI18N
+        exit.setIcon(new javax.swing.ImageIcon("img/exit.png")); // NOI18N
         exit.setText("Salir");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -681,7 +681,7 @@ public class TerminalVenta extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Artículo", "Unidades", "Precio", "Total"
+                "ArtÃ­culo", "Unidades", "Precio", "Total"
             }
         ));
         ticketPanel.setViewportView(ticketTable);
@@ -821,7 +821,7 @@ public class TerminalVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                      
 
-// CAFËS =================================================================
+// CAFÃ‹S =================================================================
     private void cortadoActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
     }                                       
