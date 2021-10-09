@@ -3,13 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Timer;
 import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,7 +25,9 @@ public class TerminalVenta extends javax.swing.JFrame {
      * Creates new form TerminalVenta
      */
     Timer timer;
-    
+    String time;
+    String time2;
+    DecimalFormat df = new DecimalFormat("#.00");
     public TerminalVenta() {
         initComponents();
         
@@ -30,11 +37,11 @@ public class TerminalVenta extends javax.swing.JFrame {
                 //Time in 24Hrs Format
                 Date date = new Date();
                 DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-                String time = timeFormat.format(date);        
+                time = timeFormat.format(date);        
                 
                Date date2 = new Date();
                 DateFormat timeFormat2 = new SimpleDateFormat("dd/MM/yyyy");
-                String time2 = timeFormat2.format(date2);
+                time2 = timeFormat2.format(date2);
                 //generamos 2 lineas en la etiqueta con codigo html
                 dateText.setText(time+ "  " +time2);
 
@@ -61,8 +68,6 @@ public class TerminalVenta extends javax.swing.JFrame {
         pescados = new javax.swing.JButton();
         postres = new javax.swing.JButton();
         cobrar = new javax.swing.JButton();
-        totalPane = new javax.swing.JScrollPane();
-        totalInfo = new javax.swing.JTextArea();
         articulosPanel = new javax.swing.JTabbedPane();
         cafesTab = new javax.swing.JPanel();
         cortado = new javax.swing.JButton();
@@ -118,8 +123,8 @@ public class TerminalVenta extends javax.swing.JFrame {
         });
 
         cafes.setIcon(new javax.swing.ImageIcon("img/cafes.jpg")); // NOI18N
-        cafes.setText("CafÃ©s");
-        cafes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CafÃ©", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        cafes.setText("Cafés");
+        cafes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Café", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         cafes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cafesActionPerformed(evt);
@@ -146,7 +151,7 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         pescados.setIcon(new javax.swing.ImageIcon("img/pescados.jpg")); // NOI18N
         pescados.setText("Pescados");
-        pescados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pescados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        pescados.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.gray, null, null), "Pescados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         pescados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pescadosActionPerformed(evt);
@@ -164,11 +169,11 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         cobrar.setIcon(new javax.swing.ImageIcon("img/money.png")); // NOI18N
         cobrar.setText("Cobrar");
-
-        totalInfo.setColumns(20);
-        totalInfo.setRows(5);
-        totalInfo.setText("Total: ");
-        totalPane.setViewportView(totalInfo);
+        cobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cobrarActionPerformed(evt);
+            }
+        });
 
         cortado.setIcon(new javax.swing.ImageIcon("img/coffe.png")); // NOI18N
         cortado.setText("Cortado");
@@ -232,12 +237,10 @@ public class TerminalVenta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(americano, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lechado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(cafesTabLayout.createSequentialGroup()
-                        .addComponent(manchado)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(manchado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lechado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         cafesTabLayout.setVerticalGroup(
             cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +257,7 @@ public class TerminalVenta extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        articulosPanel.addTab("CafÃ©s", cafesTab);
+        articulosPanel.addTab("Cafés", cafesTab);
 
         solomillo.setIcon(new javax.swing.ImageIcon("img/meat.png")); // NOI18N
         solomillo.setText("Solomillo");
@@ -358,12 +361,12 @@ public class TerminalVenta extends javax.swing.JFrame {
         bacalao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         atun.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
-        atun.setText("AtÃºn");
+        atun.setText("Atún");
         atun.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         atun.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         salmon.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
-        salmon.setText("SalmÃ³n");
+        salmon.setText("Salmón");
         salmon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salmon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -502,7 +505,7 @@ public class TerminalVenta extends javax.swing.JFrame {
         });
 
         artTonica.setIcon(new javax.swing.ImageIcon("img/refresh.png")); // NOI18N
-        artTonica.setText("TÃ³nica");
+        artTonica.setText("Tónica");
         artTonica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         artTonica.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         artTonica.addActionListener(new java.awt.event.ActionListener() {
@@ -675,13 +678,10 @@ public class TerminalVenta extends javax.swing.JFrame {
 
         ticketTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "ArtÃ­culo", "Unidades", "Precio", "Total"
+                "Artículo", "Unidades", "Precio", "Total"
             }
         ));
         ticketPanel.setViewportView(ticketTable);
@@ -694,15 +694,14 @@ public class TerminalVenta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cobrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exit)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ticketPanel)
-                    .addComponent(totalPane))
+                    .addComponent(ticketPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -740,14 +739,12 @@ public class TerminalVenta extends javax.swing.JFrame {
                         .addComponent(articulosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(ticketPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(totalPane, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -760,107 +757,633 @@ public class TerminalVenta extends javax.swing.JFrame {
 
 // POSTRES =================================================================
     private void heladoActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Helado Vainilla");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                      
 
     private void flanActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Flan");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                    
 
     private void gelatinaActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Gelatina");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                        
 
     private void tartaActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Tarta Queso");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                     
 
     private void frutaActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Melon");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                     
 
 // REFRESCOS =================================================================
     private void artColaActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Cola");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                       
 
     private void artFantaActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+ 
+      DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Fanta");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                        
 
     private void artTonicaActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Tonica");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                         
 
     private void artAguaActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Agua");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                       
 
     private void artAcuariusActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Acuarius");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                           
 
 // LICORES ================================================================= 
     private void hierbasActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Hierbas");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                       
 
     private void wiskeyActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Wisky");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                      
 
     private void ginebraActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Ginebra");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                       
 
     private void ronActionPerformed(java.awt.event.ActionEvent evt) {                                    
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Ron");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                   
 
     private void brandyActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Brandy");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                      
 
-// CAFÃ‹S =================================================================
+// CAFËS =================================================================
     private void cortadoActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Cortado");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                       
 
     private void americanoActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Americano");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                         
 
     private void lechadoActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Con leche");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                       
 
     private void manchadoActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Manchado");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                        
 
     private void carajilloActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Carajillo");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                         
 
 // CARNE =================================================================
     private void solomilloActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Solomillo");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                         
 
     private void lomoActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Lomo");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                    
 
     private void empanadoActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Empanado");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                        
 
     private void entrecotActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Entrecot");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                        
 
     private void carpaccioActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Carpaccio");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(cantidad*precio, i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
     }                                         
 
 // OPEN TAB =================================================================
@@ -887,6 +1410,35 @@ public class TerminalVenta extends javax.swing.JFrame {
     private void postresActionPerformed(java.awt.event.ActionEvent evt) {                                        
         articulosPanel.setSelectedIndex(3);
     }                                       
+
+// TOTAL =================================================================
+    private void cobrarActionPerformed(java.awt.event.ActionEvent evt) {                                       
+         int numRows = ticketTable.getRowCount();
+      if(numRows > 0){
+      double t = 0.0;
+      String ticket = "";
+      //DecimalFormat df = new DecimalFormat("#.00");
+      
+       for(int i = 0; i < numRows; i++ ){
+         String product = (String)ticketTable.getValueAt(i, 0);
+         double cant = (double)ticketTable.getValueAt(i, 1);
+         double precio = (double)ticketTable.getValueAt(i, 2);
+         double p = (double) ticketTable.getValueAt(i, 3);
+         t += p;
+         ticket = ticket+  product + "\t" + cant + "\t" +df.format(precio)+ "€" + "\t" +df.format(p) +"€" + "\n";
+         
+       }
+       
+          JOptionPane.showMessageDialog(this, new JTextArea(
+                  "Cif: A80192727\n Bar la Cañada\n Hora: " +
+                   time + " Fecha:" + time2 +"\n\n"+ "Producto \tCantidad \tPrecio \tTotal "+
+                   "\n----------------------------------------------------------------------------"+"\n"+
+                   ticket  + "\n----------------------------------------------------------------------------"+
+                  "\n\t\t Iva: \t21%"+"\n\t\t Base: \t"+ df.format(t * 0.79) +"\n\t\t Total: \t" + df.format(t)),  
+                  "Ticket",1
+          );
+        }
+    }                                      
     
     /**
      * @param args the command line arguments
@@ -974,8 +1526,6 @@ public class TerminalVenta extends javax.swing.JFrame {
     private javax.swing.JButton tarta;
     private javax.swing.JScrollPane ticketPanel;
     private javax.swing.JTable ticketTable;
-    private javax.swing.JTextArea totalInfo;
-    private javax.swing.JScrollPane totalPane;
     private javax.swing.JButton wiskey;
     // End of variables declaration                   
 }
