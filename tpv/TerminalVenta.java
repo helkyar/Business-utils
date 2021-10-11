@@ -123,8 +123,8 @@ public class TerminalVenta extends javax.swing.JFrame {
         });
 
         cafes.setIcon(new javax.swing.ImageIcon("img/cafes.jpg")); // NOI18N
-        cafes.setText("Cafés");
-        cafes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Café", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        cafes.setText("Cafï¿½s");
+        cafes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cafe", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         cafes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cafesActionPerformed(evt);
@@ -257,7 +257,7 @@ public class TerminalVenta extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        articulosPanel.addTab("Cafés", cafesTab);
+        articulosPanel.addTab("Cafes", cafesTab);
 
         solomillo.setIcon(new javax.swing.ImageIcon("img/meat.png")); // NOI18N
         solomillo.setText("Solomillo");
@@ -349,26 +349,51 @@ public class TerminalVenta extends javax.swing.JFrame {
         lubina.setText("Lubina");
         lubina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lubina.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lubina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lubinaActionPerformed(evt);
+            }
+        });
 
         merluza.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
         merluza.setText("Merluza");
         merluza.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         merluza.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        merluza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                merluzaActionPerformed(evt);
+            }
+        });
 
         bacalao.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
         bacalao.setText("Bacalao");
         bacalao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bacalao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bacalao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bacalaoActionPerformed(evt);
+            }
+        });
 
         atun.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
-        atun.setText("Atún");
+        atun.setText("Atun");
         atun.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         atun.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        atun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atunActionPerformed(evt);
+            }
+        });
 
         salmon.setIcon(new javax.swing.ImageIcon("img/fish.png")); // NOI18N
-        salmon.setText("Salmón");
+        salmon.setText("Salmon");
         salmon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salmon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salmon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salmonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pescadosTabLayout = new javax.swing.GroupLayout(pescadosTab);
         pescadosTab.setLayout(pescadosTabLayout);
@@ -505,7 +530,7 @@ public class TerminalVenta extends javax.swing.JFrame {
         });
 
         artTonica.setIcon(new javax.swing.ImageIcon("img/refresh.png")); // NOI18N
-        artTonica.setText("Tónica");
+        artTonica.setText("Tonica");
         artTonica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         artTonica.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         artTonica.addActionListener(new java.awt.event.ActionListener() {
@@ -681,7 +706,7 @@ public class TerminalVenta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Artículo", "Unidades", "Precio", "Total"
+                "Articulo", "Unidades", "Precio \u20ac", "Total \u20ac"
             }
         ));
         ticketPanel.setViewportView(ticketTable);
@@ -767,10 +792,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -792,10 +817,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -817,10 +842,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -842,10 +867,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -867,10 +892,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -893,10 +918,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -919,10 +944,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -944,10 +969,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -969,10 +994,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -994,10 +1019,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1020,10 +1045,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1045,10 +1070,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1070,10 +1095,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1095,10 +1120,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1120,10 +1145,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1134,10 +1159,10 @@ public class TerminalVenta extends javax.swing.JFrame {
         } 
     }                                      
 
-// CAFËS =================================================================
+// CAFES =================================================================
     private void cortadoActionPerformed(java.awt.event.ActionEvent evt) {                                        
           DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Cortado");
+      String fanta = new String("Cortado  ");
       int numRows = ticketTable.getRowCount();
  
       double cantidad=1.00;
@@ -1146,10 +1171,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1171,10 +1196,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1196,10 +1221,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1221,10 +1246,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1246,10 +1271,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1272,10 +1297,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1288,7 +1313,7 @@ public class TerminalVenta extends javax.swing.JFrame {
 
     private void lomoActionPerformed(java.awt.event.ActionEvent evt) {                                     
          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Lomo");
+      String fanta = new String("Lomo   ");
       int numRows = ticketTable.getRowCount();
  
       double cantidad=1.00;
@@ -1297,10 +1322,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1322,10 +1347,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1347,10 +1372,10 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1362,7 +1387,7 @@ public class TerminalVenta extends javax.swing.JFrame {
     }                                        
 
     private void carpaccioActionPerformed(java.awt.event.ActionEvent evt) {                                          
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
       String fanta = new String("Carpaccio");
       int numRows = ticketTable.getRowCount();
  
@@ -1372,10 +1397,135 @@ public class TerminalVenta extends javax.swing.JFrame {
             
        for(int i = 0; i < numRows; i++ ){
             if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double)Math.floor((double) model.getValueAt(i, 1));
+                cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(cantidad*precio, i,3);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
+    }                                         
+// Pescado =================================================================
+    private void salmonActionPerformed(java.awt.event.ActionEvent evt) {                                          
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Salmon");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double) model.getValueAt(i, 1);
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
+    }                                         
+
+    private void lubinaActionPerformed(java.awt.event.ActionEvent evt) {                                     
+         DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Lubina");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double) model.getValueAt(i, 1);
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
+    }                                    
+
+    private void bacalaoActionPerformed(java.awt.event.ActionEvent evt) {                                         
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Bacalao");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double) model.getValueAt(i, 1);
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
+    }                                        
+
+    private void merluzaActionPerformed(java.awt.event.ActionEvent evt) {                                         
+          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Merluza");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double) model.getValueAt(i, 1);
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
+
+                }
+            }
+       
+        if (cantidad == 1.00){
+            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            model.addRow(newRecord);
+        } 
+    }                                        
+
+    private void atunActionPerformed(java.awt.event.ActionEvent evt) {                                          
+      DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+      String fanta = new String("Atun    ");
+      int numRows = ticketTable.getRowCount();
+ 
+      double cantidad=1.00;
+      double precio = 1.2;
+      
+            
+       for(int i = 0; i < numRows; i++ ){
+            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+                cantidad += (double) model.getValueAt(i, 1);
+                
+                ticketTable.setValueAt(cantidad, i,1);
+                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
 
                 }
             }
@@ -1413,30 +1563,35 @@ public class TerminalVenta extends javax.swing.JFrame {
 
 // TOTAL =================================================================
     private void cobrarActionPerformed(java.awt.event.ActionEvent evt) {                                       
-         int numRows = ticketTable.getRowCount();
+      int numRows = ticketTable.getRowCount();
       if(numRows > 0){
-      double t = 0.0;
-      String ticket = "";
-      //DecimalFormat df = new DecimalFormat("#.00");
-      
-       for(int i = 0; i < numRows; i++ ){
-         String product = (String)ticketTable.getValueAt(i, 0);
-         double cant = (double)ticketTable.getValueAt(i, 1);
-         double precio = (double)ticketTable.getValueAt(i, 2);
-         double p = (double) ticketTable.getValueAt(i, 3);
-         t += p;
-         ticket = ticket+  product + "\t" + cant + "\t" +df.format(precio)+ "€" + "\t" +df.format(p) +"€" + "\n";
-         
-       }
-       
-          JOptionPane.showMessageDialog(this, new JTextArea(
-                  "Cif: A80192727\n Bar la Cañada\n Hora: " +
-                   time + " Fecha:" + time2 +"\n\n"+ "Producto \tCantidad \tPrecio \tTotal "+
+        DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
+        double t = 0.0;
+        String ticket = "";
+        
+        for(int i = 0; i < numRows; i++ ){
+            
+            String product = (String)ticketTable.getValueAt(i, 0);            
+            double cant = (double)ticketTable.getValueAt(i, 1);            
+            double precio = (double)ticketTable.getValueAt(i, 2);
+            
+            Double p = Double.parseDouble(ticketTable.getValueAt(i, 3).toString().replace(",", "."));
+    
+            t += p;
+            
+            ticket = ticket+  product + "\t" + cant + "\t" +df.format(precio)+ "\u20ac" + "\t" + df.format(p) +"\u20ac" + "\n";
+            
+        }
+       String finalTicket = " Cif: A80192727\n Bar la Pedruscada\n Hora: " +
+                   time + " Fecha:" + time2 +"\n\n"+ "Producto \tCant. \tPrecio \tTotal "+
                    "\n----------------------------------------------------------------------------"+"\n"+
                    ticket  + "\n----------------------------------------------------------------------------"+
-                  "\n\t\t Iva: \t21%"+"\n\t\t Base: \t"+ df.format(t * 0.79) +"\n\t\t Total: \t" + df.format(t)),  
-                  "Ticket",1
-          );
+                  "\n\t\t Iva: \t21%"+"\n\t\t Base: \t"+ df.format(t * 0.79)+"\u20ac" +"\n\t\t Tot.: \t" + df.format(t)+"\u20ac";
+
+        // OpciÃ³n aceptar/cancelar
+          JOptionPane.showMessageDialog(this, new JTextArea(finalTicket), "Ticket", 1);
+          CreateFile.imprimir("ticket", finalTicket);
+          model.setRowCount(0);
         }
     }                                      
     
@@ -1444,11 +1599,7 @@ public class TerminalVenta extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1465,9 +1616,9 @@ public class TerminalVenta extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TerminalVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
+        
+        /* Crear y lanzar el Frame 
+           Cojer cualquier posible error que escape a NetBins */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try{
