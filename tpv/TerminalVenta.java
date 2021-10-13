@@ -113,6 +113,11 @@ public class TerminalVenta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TPV");
 
+        // VISIBILIDAD ==================================================================
+        articulosPanel.setVisible(false);
+
+        // ESTILOS, EVENTOS Y POSICIÓN ======================================================
+
         refrescos.setIcon(new javax.swing.ImageIcon("img/refrescos.jpg")); // NOI18N
         refrescos.setText("Refrescos");
         refrescos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Refrescos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -231,29 +236,31 @@ public class TerminalVenta extends javax.swing.JFrame {
             cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cafesTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(carajillo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cortado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(americano, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(manchado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lechado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cafesTabLayout.createSequentialGroup()
+                        .addComponent(cortado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lechado))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cafesTabLayout.createSequentialGroup()
+                        .addComponent(americano)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(carajillo, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(manchado, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         cafesTabLayout.setVerticalGroup(
             cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cafesTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cortado, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lechado, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(americano, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(americano, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manchado, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carajillo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cafesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(carajillo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manchado, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lechado, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cortado, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -772,7 +779,9 @@ public class TerminalVenta extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        pack();
+        // pack();
+        setBounds(200, 100, 900, 450);
+        setResizable(false);
     }// </editor-fold>                        
 
     
@@ -1539,26 +1548,45 @@ public class TerminalVenta extends javax.swing.JFrame {
 // OPEN TAB =================================================================
     private void licoresActionPerformed(java.awt.event.ActionEvent evt) {                                        
         articulosPanel.setSelectedIndex(5);
+        if(!articulosPanel.isVisible()){
+            articulosPanel.setVisible(true);        
+        }
     }                                       
 
     private void refrescosActionPerformed(java.awt.event.ActionEvent evt) {                                          
         articulosPanel.setSelectedIndex(4);
-    }                                         
+        if(!articulosPanel.isVisible()){
+            articulosPanel.setVisible(true);        
+        }
+    }   
+                                             
 
     private void cafesActionPerformed(java.awt.event.ActionEvent evt) {                                      
         articulosPanel.setSelectedIndex(0);
+        if(!articulosPanel.isVisible()){
+            articulosPanel.setVisible(true);        
+        }  
     }                                     
 
     private void carnesActionPerformed(java.awt.event.ActionEvent evt) {                                       
         articulosPanel.setSelectedIndex(1);
+        if(!articulosPanel.isVisible()){
+            articulosPanel.setVisible(true);        
+        }
     }                                      
 
     private void pescadosActionPerformed(java.awt.event.ActionEvent evt) {                                         
         articulosPanel.setSelectedIndex(2);
+        if(!articulosPanel.isVisible()){
+            articulosPanel.setVisible(true);        
+        }
     }                                        
 
     private void postresActionPerformed(java.awt.event.ActionEvent evt) {                                        
         articulosPanel.setSelectedIndex(3);
+        if(!articulosPanel.isVisible()){
+            articulosPanel.setVisible(true);        
+        }
     }                                       
 
 // TOTAL =================================================================
