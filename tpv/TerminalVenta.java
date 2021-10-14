@@ -787,20 +787,17 @@ public class TerminalVenta extends javax.swing.JFrame {
     
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {                                     
         System.exit(0);
-    }                                    
-
-// POSTRES =================================================================
-    private void heladoActionPerformed(java.awt.event.ActionEvent evt) {                                       
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Helado Vainilla");
+    } 
+// ROW EDIT =================================================================  
+    private void increaseCount(String s){
+      DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
       int numRows = ticketTable.getRowCount();
  
       double cantidad=1.00;
       double precio = 1.2;
-      
-            
+       
        for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
+            if(s.equals(ticketTable.getValueAt(i, 0))){
                 cantidad += (double) model.getValueAt(i, 1);
                 
                 ticketTable.setValueAt(cantidad, i,1);
@@ -810,739 +807,164 @@ public class TerminalVenta extends javax.swing.JFrame {
             }
        
         if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
+            Object[] newRecord = { s, cantidad, precio,(cantidad*precio) };
             model.addRow(newRecord);
-        } 
+        }     
+    }                                
+
+// POSTRES =================================================================
+    private void heladoActionPerformed(java.awt.event.ActionEvent evt) {       
+      increaseCount("Helado    ");
     }                                      
 
     private void flanActionPerformed(java.awt.event.ActionEvent evt) {                                     
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Flan");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Flan    ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                    
 
     private void gelatinaActionPerformed(java.awt.event.ActionEvent evt) {                                         
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Gelatina");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Gelatina");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                        
 
     private void tartaActionPerformed(java.awt.event.ActionEvent evt) {                                      
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Tarta Queso");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Tarta Q.");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                     
 
     private void frutaActionPerformed(java.awt.event.ActionEvent evt) {                                      
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Melon");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Melón    ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                     
 
 // REFRESCOS =================================================================
     private void artColaActionPerformed(java.awt.event.ActionEvent evt) {                                        
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Cola");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Cola  ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                       
 
     private void artFantaActionPerformed(java.awt.event.ActionEvent evt) {                                         
  
-      DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Fanta");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Fanta  ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                        
 
     private void artTonicaActionPerformed(java.awt.event.ActionEvent evt) {                                          
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Tonica");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Tonica");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                         
 
     private void artAguaActionPerformed(java.awt.event.ActionEvent evt) {                                        
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Agua");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Agua");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                       
 
     private void artAcuariusActionPerformed(java.awt.event.ActionEvent evt) {                                            
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Acuarius");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Acuarius");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                           
 
 // LICORES ================================================================= 
     private void hierbasActionPerformed(java.awt.event.ActionEvent evt) {                                        
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Hierbas");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Hierbas");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                       
 
     private void wiskeyActionPerformed(java.awt.event.ActionEvent evt) {                                       
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Wisky");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Wisky  ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                      
 
     private void ginebraActionPerformed(java.awt.event.ActionEvent evt) {                                        
-         DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Ginebra");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Ginebra");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                       
 
     private void ronActionPerformed(java.awt.event.ActionEvent evt) {                                    
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Ron");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Ron   ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                   
 
     private void brandyActionPerformed(java.awt.event.ActionEvent evt) {                                       
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Brandy");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Brandy");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                      
 
 // CAFES =================================================================
     private void cortadoActionPerformed(java.awt.event.ActionEvent evt) {                                        
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Cortado  ");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Cortado");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                       
 
     private void americanoActionPerformed(java.awt.event.ActionEvent evt) {                                          
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Americano");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Americano");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                         
 
     private void lechadoActionPerformed(java.awt.event.ActionEvent evt) {                                        
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Con leche");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+       increaseCount("Con Leche");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                       
 
     private void manchadoActionPerformed(java.awt.event.ActionEvent evt) {                                         
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Manchado");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+       increaseCount("Manchado");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                        
 
     private void carajilloActionPerformed(java.awt.event.ActionEvent evt) {                                          
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Carajillo");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Carajillo");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                         
 
 // CARNE =================================================================
     private void solomilloActionPerformed(java.awt.event.ActionEvent evt) {                                          
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Solomillo");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Solomillo");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                         
 
     private void lomoActionPerformed(java.awt.event.ActionEvent evt) {                                     
-         DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Lomo   ");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Lomo   ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                    
 
     private void empanadoActionPerformed(java.awt.event.ActionEvent evt) {                                         
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Empanado");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Empanado");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                        
 
     private void entrecotActionPerformed(java.awt.event.ActionEvent evt) {                                         
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Entrecot");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Entrecot");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                        
 
     private void carpaccioActionPerformed(java.awt.event.ActionEvent evt) {                                          
-      DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Carpaccio");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Carpaccio");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                         
 // Pescado =================================================================
     private void salmonActionPerformed(java.awt.event.ActionEvent evt) {                                          
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Salmon");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Salmon");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                         
 
     private void lubinaActionPerformed(java.awt.event.ActionEvent evt) {                                     
-         DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Lubina");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+       increaseCount("Lubina");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                    
 
     private void bacalaoActionPerformed(java.awt.event.ActionEvent evt) {                                         
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Bacalao");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+       increaseCount("Bacalao");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                        
 
     private void merluzaActionPerformed(java.awt.event.ActionEvent evt) {                                         
-          DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Merluza");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Merluza");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                        
 
     private void atunActionPerformed(java.awt.event.ActionEvent evt) {                                          
-      DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
-      String fanta = new String("Atun    ");
-      int numRows = ticketTable.getRowCount();
- 
-      double cantidad=1.00;
-      double precio = 1.2;
+      increaseCount("Atun   ");
       
-            
-       for(int i = 0; i < numRows; i++ ){
-            if(fanta.equals(ticketTable.getValueAt(i, 0))){
-                cantidad += (double) model.getValueAt(i, 1);
-                
-                ticketTable.setValueAt(cantidad, i,1);
-                ticketTable.setValueAt(df.format(cantidad*precio), i,3);
-
-                }
-            }
-       
-        if (cantidad == 1.00){
-            Object[] newRecord = { fanta, cantidad, precio,(cantidad*precio) };
-            model.addRow(newRecord);
-        } 
     }                                         
 
 // OPEN TAB =================================================================
