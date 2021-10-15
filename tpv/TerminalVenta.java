@@ -111,6 +111,7 @@ public class TerminalVenta extends javax.swing.JFrame {
         dateText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         setTitle("TPV");
 
         // VISIBILIDAD ==================================================================
@@ -1039,9 +1040,10 @@ public class TerminalVenta extends javax.swing.JFrame {
                   "\n\t\t Iva: \t21%"+"\n\t\t Base: \t"+ df.format(t * 0.79)+"\u20ac" +"\n\t\t Tot.: \t" + df.format(t)+"\u20ac";
 
         // Opción aceptar/cancelar
-          JOptionPane.showMessageDialog(this, new JTextArea(finalTicket), "Ticket", 1);
-          CreateFile.imprimir("ticket", finalTicket);
-          model.setRowCount(0);
+          if(JOptionPane.showConfirmDialog(this, new JTextArea(finalTicket), "Ticket", JOptionPane.OK_CANCEL_OPTION) == 0){
+            CreateFile.imprimir("ticket", finalTicket);
+            model.setRowCount(0);
+          }
         }
     }                                      
     
