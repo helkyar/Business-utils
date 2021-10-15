@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -15,6 +13,8 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
@@ -110,7 +110,12 @@ public class TerminalVenta extends javax.swing.JFrame {
         ticketTable = new javax.swing.JTable();
         dateText = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                close();
+            }
+        });
 
         setTitle("TPV");
 
@@ -787,8 +792,18 @@ public class TerminalVenta extends javax.swing.JFrame {
 
     
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        System.exit(0);
+        close();
     } 
+    private void close (){
+        int numRows = ticketTable.getRowCount();
+        if (numRows > 0 ){
+            int exit = JOptionPane.showConfirmDialog(this, "Guardar los cambios?", "Salir", JOptionPane.YES_NO_CANCEL_OPTION);
+            if(exit == 1) {System.exit(0);} //no
+            else if(exit == 0) {//yes
+                ticketGen(numRows);
+            }
+        } else {System.exit(0);}
+    }
 // ROW EDIT =================================================================  
     private void increaseCount(String s){
       DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
@@ -1016,6 +1031,11 @@ public class TerminalVenta extends javax.swing.JFrame {
     private void cobrarActionPerformed(java.awt.event.ActionEvent evt) {                                       
       int numRows = ticketTable.getRowCount();
       if(numRows > 0){
+         ticketGen(numRows);
+      }
+    }    
+    
+    private void ticketGen(int numRows){
         DefaultTableModel model = (DefaultTableModel) ticketTable.getModel();
         double t = 0.0;
         String ticket = "";
@@ -1044,8 +1064,7 @@ public class TerminalVenta extends javax.swing.JFrame {
             CreateFile.imprimir("ticket", finalTicket);
             model.setRowCount(0);
           }
-        }
-    }                                      
+    }
     
     /**
      * @param args the command line arguments
