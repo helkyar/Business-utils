@@ -1,7 +1,12 @@
 
 import java.util.*;
 import javax.swing.*;
+
+import javax.swing.text.StyledEditorKit;
+
+import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,14 +20,17 @@ class Notes extends JFrame implements ActionListener{
     private JPopupMenu pMenu;
 
     private JScrollPane Spanel;
-    private JTextArea text;
+    // private JTextArea text; //StyledEditorKit doesn't work on textAreas
+    private JTextPane text;
 
     // ====================================================
     // CONSTRUCTOR
     // ====================================================
     Notes(){
         super("Notes");
-        // MENU BAR ----------------------------------------------
+
+        tBar = new JToolBar();
+
         JMenu file = new JMenu("Archivo");
         createComponent("Guardar", file);
         createComponent("Nuevo", file);
@@ -56,12 +64,14 @@ class Notes extends JFrame implements ActionListener{
         mBar.add(others);
 
         // SCROLLING TEXT AREA ------------------------------------
-        text = new JTextArea();
+        text = new JTextPane();
         Spanel = new JScrollPane(text);
 
         // STRUCTURING THE FRAME ----------------------------------
+        setLayout(new BorderLayout());
         setJMenuBar(mBar);
-        add(Spanel);
+        add(Spanel, BorderLayout.CENTER);
+        add(tBar, BorderLayout.NORTH);
 
         // --------------------------------------------------------
         setSize(500, 500);
@@ -75,11 +85,29 @@ class Notes extends JFrame implements ActionListener{
             });
     }
 
+    // =================================================================================
     // COMPONENT CREATOR ===============================================================
     private void createComponent ( String s, JMenu m){
-        JMenuItem mItem = new JMenuItem(s);
-        mItem.addActionListener(this);
+
+        ImageIcon icon = new ImageIcon("img/"+"placeholder"+".png");
+        ActionListener action = this;
+
+        // Special cases
+        if(s.equals("Negrita")) {action = new StyledEditorKit.BoldAction();}
+        else if(s.equals("Cursiva")) {action = new StyledEditorKit.ItalicAction();}
+        else if(s.equals("Subrayado")) {action = new StyledEditorKit.UnderlineAction();}
+        else if(s.equals("Alinear Izquierda")) {}
+        else if(s.equals("Alinear Derecha")) {}
+        else if(s.equals("Centrar")) {}
+        else if(s.equals("Justificar")) {}
+
+        JMenuItem mItem = new JMenuItem(s, icon);
+        mItem.addActionListener(action);
         m.add(mItem);
+
+        JButton buton = new JButton(icon);
+        buton.addActionListener(action);
+        tBar.add(buton);
     }
 
     // OPEN ============================================================================
@@ -120,6 +148,7 @@ class Notes extends JFrame implements ActionListener{
             JOptionPane.showMessageDialog(this, "Operacion cancelada");
         }
     }
+
     // SAVE =============================================================================
     private void save(String s) {
          // Creatmos el objecto de JFileChooser class
@@ -178,14 +207,15 @@ class Notes extends JFrame implements ActionListener{
 
     // EVENT LISTENER =====================================================================
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
+        String ac = e.getActionCommand();
+        String s = e.getSource().toString();
 
         // File --------------------------------------------------------------------------
         if(s.equals("Cerrar")) close();
-        else if (s.equals("Guardar"))  {save("");}
-        else if (s.equals("Nuevo"))    {newDoc();}
-        else if (s.equals("Abrir"))    {open();}
-        else if (s.equals("Imprimir")) {
+        else if (ac.equals("Guardar"))  {save("");}
+        else if (ac.equals("Nuevo"))    {newDoc();}
+        else if (ac.equals("Abrir"))    {open();}
+        else if (ac.equals("Imprimir")) {
             try {
                 text.print();
             } catch (Exception evt) {
@@ -194,11 +224,18 @@ class Notes extends JFrame implements ActionListener{
         }
 
         // Edit --------------------------------------------------------------------------
-        if (s.equals("Cortar")) {text.cut();}
-        else if (s.equals("Copiar")) {text.copy();}
-        else if (s.equals("Pegar")) {text.paste();}
+        if (ac.equals("Cortar")) {text.cut();}
+        else if (ac.equals("Copiar")) {text.copy();}
+        else if (ac.equals("Pegar")) {text.paste();}
 
         // Format ------------------------------------------------------------------------
+        if(s.equals("Negrita")){}
+        if(s.equals("Cursiva")){}
+        if(s.equals("Subrayado")){}
+        if(s.equals("Alinear Izquierda")){}
+        else if(s.equals("Alinear Derecha")){}
+        else if(s.equals("Centrar")){}
+        else if(s.equals("Justificar")){}
 
         // Help --------------------------------------------------------------------------
     }
