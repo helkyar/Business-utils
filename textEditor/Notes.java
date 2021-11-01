@@ -1,7 +1,7 @@
 
 import java.util.*;
 import javax.swing.*;
-
+import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledEditorKit;
 
 import java.awt.BorderLayout;
@@ -16,10 +16,11 @@ import java.io.FileWriter;
 class Notes extends JFrame implements ActionListener{
 
     private JMenuBar mBar;
+    JMenu file;
     private JToolBar tBar;
     private JPopupMenu pMenu;
 
-    private JScrollPane Spanel;
+    private JScrollPane sPanel;
     // private JTextArea text; //StyledEditorKit doesn't work on textAreas
     private JTextPane text;
 
@@ -30,32 +31,38 @@ class Notes extends JFrame implements ActionListener{
         super("Notes");
 
         tBar = new JToolBar();
+        pMenu = new JPopupMenu();
 
-        JMenu file = new JMenu("Archivo");
-        createComponent("Guardar", file);
-        createComponent("Nuevo", file);
-        createComponent("Abrir", file);
-        createComponent("Imprimir", file);
+        file = new JMenu("Archivo");
+        createComponent("Guardar", file, "Guardar documento");
+        createComponent("Nuevo", file, "Abrir documento en blanco");
+        createComponent("Abrir", file, "Abrir documento especifico");
+        createComponent("Imprimir", file, "Imprimir documento");
+        tBar.addSeparator();
 
         JMenu edit = new JMenu("Editar");
-        createComponent("Cortar", edit);
-        createComponent("Copiar", edit);
-        createComponent("Pegar", edit);
+        createComponent("Cortar", edit, "Cortar texto seleccionado");
+        createComponent("Copiar", edit, "Copiar texto seleccionado");
+        createComponent("Pegar", edit, "Pegar texto seleccionado");
+        tBar.addSeparator();
+        pMenu.addSeparator();
 
         JMenu format = new JMenu("Formato");
-        createComponent("Basica", format);
-        createComponent("Negrita", format);
-        createComponent("Cursiva", format);
-        createComponent("Subrayado", format);
+        createComponent("Negrita", format, "Poner en negrita texto seleccionado");
+        createComponent("Cursiva", format, "Poner en cursiva texto seleccionado");
+        createComponent("Subrayado", format, "Subrayar texto seleccionado");
+        tBar.addSeparator();
         format.addSeparator();
-        createComponent("Alinear Izquierda", format);
-        createComponent("Alinear Derecha", format);
-        createComponent("Centrar", format);
-        createComponent("Justificar", format);
+        createComponent("Alinear Izquierda", format, "Alinear parrafo izquierda");
+        createComponent("Alinear Derecha", format, "Alinear parrafo derecha");
+        createComponent("Centrar", format, "Centrar parrafo");
+        createComponent("Justificar", format, "Justificar parrafo");
+        tBar.addSeparator();
 
         JMenu others = new JMenu("Otros");
-        createComponent("Cerrar", others);
-        createComponent("Ayuda", others);
+        createComponent("Cerrar", others, "Cierra el programa");
+        createComponent("Ayuda", others, "Informacion del programa");
+        tBar.addSeparator();
 
         mBar = new JMenuBar();
         mBar.add(file);
@@ -65,16 +72,18 @@ class Notes extends JFrame implements ActionListener{
 
         // SCROLLING TEXT AREA ------------------------------------
         text = new JTextPane();
-        Spanel = new JScrollPane(text);
+        text.setComponentPopupMenu(pMenu);
+        sPanel = new JScrollPane(text);
 
         // STRUCTURING THE FRAME ----------------------------------
         setLayout(new BorderLayout());
         setJMenuBar(mBar);
-        add(Spanel, BorderLayout.CENTER);
+        add(sPanel, BorderLayout.CENTER);
         add(tBar, BorderLayout.NORTH);
 
         // --------------------------------------------------------
         setSize(500, 500);
+        setExtendedState(MAXIMIZED_BOTH);
         setVisible(true);
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -87,99 +96,96 @@ class Notes extends JFrame implements ActionListener{
 
     // =================================================================================
     // COMPONENT CREATOR ===============================================================
-    private void createComponent ( String s, JMenu m){
+    private void createComponent ( String s, JMenu m, String tooltip){
 
         ImageIcon icon = new ImageIcon("img/"+"placeholder"+".png");
         ActionListener action = this;
 
-        // Special cases
-        if(s.equals("Negrita")) {action = new StyledEditorKit.BoldAction();}
-        else if(s.equals("Cursiva")) {action = new StyledEditorKit.ItalicAction();}
+        // Special cases --------------------------------------------------------------
+        if(s.equals("Negrita"))        {action = new StyledEditorKit.BoldAction();}
+        else if(s.equals("Cursiva"))   {action = new StyledEditorKit.ItalicAction();}
         else if(s.equals("Subrayado")) {action = new StyledEditorKit.UnderlineAction();}
-        else if(s.equals("Alinear Izquierda")) {}
-        else if(s.equals("Alinear Derecha")) {}
-        else if(s.equals("Centrar")) {}
-        else if(s.equals("Justificar")) {}
+        else if(s.equals("Alinear Izquierda")) {action = new StyledEditorKit.AlignmentAction("Alinear Izquierda", StyleConstants.ALIGN_LEFT);}
+        else if(s.equals("Alinear Derecha"))   {action = new StyledEditorKit.AlignmentAction("Alinear Derecha", StyleConstants.ALIGN_RIGHT);}
+        else if(s.equals("Centrar"))           {action = new StyledEditorKit.AlignmentAction("Centrar", StyleConstants.ALIGN_CENTER);}
+        else if(s.equals("Justificar"))        {action = new StyledEditorKit.AlignmentAction("Justificar", StyleConstants.ALIGN_JUSTIFIED);}
 
+        // Menu Item -----------------------------------------------------------------
         JMenuItem mItem = new JMenuItem(s, icon);
         mItem.addActionListener(action);
+        mItem.setToolTipText(tooltip);
         m.add(mItem);
 
-        JButton buton = new JButton(icon);
-        buton.addActionListener(action);
-        tBar.add(buton);
+        // Tool Bar Button -----------------------------------------------------------
+        JButton btn = new JButton(icon);
+        btn.addActionListener(action);
+        btn.setToolTipText(tooltip);
+        tBar.add(btn);
+
+        // Popup Menu ---------------------------------------------------------------
+        if (s.equals("Negrita") || s.equals("Cursiva") || s.equals("Subrayado")|| 
+            s.equals("Cortar")  || s.equals("Copiar")  || s.equals("Pegar")) {
+            JMenuItem popItem = new JMenuItem(s, icon);
+            popItem.addActionListener(action);
+            popItem.setToolTipText(tooltip);
+            pMenu.add(popItem);
+        }
     }
 
     // OPEN ============================================================================
     private void open() {
-        // Creamos el objeto para abrir archivos
         JFileChooser j = new JFileChooser("f:");
         
-        // invocamos el dialogo de abertura archivo
+        // Save file dialog
         int r = j.showOpenDialog(this);
         
-        // If the user selects a file
-        if (r == JFileChooser.APPROVE_OPTION) {
-            // etiqueta de el directorio completo                
+        if (r == JFileChooser.APPROVE_OPTION) {               
             File fi = new File(j.getSelectedFile().getAbsolutePath());
             try {
-                // String
-                String s1 = "", sl = "";
-                
-                // lector de archivo
+                String sReader = "", sText = "";
                 FileReader fr = new FileReader(fi);
-                
-                // Buffered lector
                 BufferedReader br = new BufferedReader(fr);
-
-                // inicializa sl
-                sl = br.readLine();
                 
-                // leer desde el archivo
-                while ((s1 = br.readLine()) != null) {   
-                    sl = sl + "\n" + s1;
+                while ((sReader = br.readLine()) != null) {   
+                    sText += sReader + "\n";
                 }
-                    
-                // Set the text
-                text.setText(sl);
-            } catch (Exception evt) {JOptionPane.showMessageDialog(this, evt.getMessage());}    
+  
+                text.setText(sText);
+                br.close();
 
-        } else {// Usuario cancela operacion
+            } catch (Exception evt) {
+                JOptionPane.showMessageDialog(this, evt.getMessage());
+            }    
+        } else {//User cancels
             JOptionPane.showMessageDialog(this, "Operacion cancelada");
         }
     }
 
     // SAVE =============================================================================
     private void save(String s) {
-         // Creatmos el objecto de JFileChooser class
             JFileChooser j = new JFileChooser("f:");
             
-            // invocamos showsSaveDialog function para guardar
-            int r = j.showSaveDialog(this); //guardar dialogo
+            // Save file dialog
+            int r = j.showSaveDialog(this);
             
             if (r == JFileChooser.APPROVE_OPTION) {
-                // etiqueta de el directorio completo
                 File fi = new File(j.getSelectedFile().getAbsolutePath());
                 
                 try {
-                    // Creamos file writer
+                    // File writer 
                     FileWriter wr = new FileWriter(fi, false);
-                    
-                    // bufer para ecribir
                     BufferedWriter w = new BufferedWriter(wr);
-                    
-                    // escribe el archivo
                     w.write(text.getText());
                     w.flush();
                     w.close(); 
 
-                    // Operación realizada con éxito, sale del bucle
+                    //If the method making the call is close(). Exit when saved.
                     if (s.equals("close")) System.exit(0);
 
                 } catch (Exception evt) {
                     JOptionPane.showMessageDialog(this, evt.getMessage());
                 }
-            } else {
+            } else {//User cancels
                 JOptionPane.showMessageDialog(this, "Operacion cancelada");
                 if (s.equals("close")) close();
                 else if ( s.equals("newDoc")) newDoc();
@@ -211,11 +217,10 @@ class Notes extends JFrame implements ActionListener{
         String s = e.getSource().toString();
 
         // File --------------------------------------------------------------------------
-        if(s.equals("Cerrar")) close();
-        else if (ac.equals("Guardar"))  {save("");}
-        else if (ac.equals("Nuevo"))    {newDoc();}
-        else if (ac.equals("Abrir"))    {open();}
-        else if (ac.equals("Imprimir")) {
+        if (ac.equals("Guardar") || s.contains("Guardar"))  {save("");}
+        else if (ac.equals("Nuevo") || s.contains("Nuevo")) {newDoc();}
+        else if (ac.equals("Abrir") || s.contains("Abrir")) {open();}
+        else if (ac.equals("Imprimir") || s.contains("Imprimir")) {
             try {
                 text.print();
             } catch (Exception evt) {
@@ -224,20 +229,13 @@ class Notes extends JFrame implements ActionListener{
         }
 
         // Edit --------------------------------------------------------------------------
-        if (ac.equals("Cortar")) {text.cut();}
-        else if (ac.equals("Copiar")) {text.copy();}
-        else if (ac.equals("Pegar")) {text.paste();}
+        else if (ac.equals("Cortar") || s.contains("Cortar")) {text.cut();}
+        else if (ac.equals("Copiar") || s.contains("Copiar")) {text.copy();}
+        else if (ac.equals("Pegar") || s.contains("Pegar"))   {text.paste();}
 
-        // Format ------------------------------------------------------------------------
-        if(s.equals("Negrita")){}
-        if(s.equals("Cursiva")){}
-        if(s.equals("Subrayado")){}
-        if(s.equals("Alinear Izquierda")){}
-        else if(s.equals("Alinear Derecha")){}
-        else if(s.equals("Centrar")){}
-        else if(s.equals("Justificar")){}
-
-        // Help --------------------------------------------------------------------------
+        // Others --------------------------------------------------------------------------
+        else if(ac.equals("Cerrar") || s.contains("Cerrar")) {close();}
+        else if (ac.equals("Ayuda") || s.contains("Ayuda"))  {}
     }
 
     public static void main(String[] args) {
