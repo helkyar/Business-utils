@@ -7,6 +7,7 @@ import javax.swing.text.StyledEditorKit;
 import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.awt.Font;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,13 +16,13 @@ import java.io.FileWriter;
 
 class Notes extends JFrame implements ActionListener{
 
-    private JMenuBar mBar;
+    private JMenuBar menuBar;
     JMenu file;
-    private JToolBar tBar;
-    private JPopupMenu pMenu;
+    private JToolBar toolBar;
+    private JPopupMenu popMenu;
 
     private JScrollPane sPanel;
-    // private JTextArea text; //StyledEditorKit doesn't work on textAreas
+    //StyledEditorKit doesn't work on textAreas
     private JTextPane text;
 
     // ====================================================
@@ -30,56 +31,56 @@ class Notes extends JFrame implements ActionListener{
     Notes(){
         super("Notes");
 
-        tBar = new JToolBar();
-        pMenu = new JPopupMenu();
+        toolBar = new JToolBar();
+        popMenu = new JPopupMenu();
 
         file = new JMenu("Archivo");
         createComponent("Guardar", file, "Guardar documento");
         createComponent("Nuevo", file, "Abrir documento en blanco");
         createComponent("Abrir", file, "Abrir documento especifico");
         createComponent("Imprimir", file, "Imprimir documento");
-        tBar.addSeparator();
+        toolBar.addSeparator();
 
         JMenu edit = new JMenu("Editar");
         createComponent("Cortar", edit, "Cortar texto seleccionado");
         createComponent("Copiar", edit, "Copiar texto seleccionado");
         createComponent("Pegar", edit, "Pegar texto seleccionado");
-        tBar.addSeparator();
-        pMenu.addSeparator();
+        toolBar.addSeparator();
+        popMenu.addSeparator();
 
         JMenu format = new JMenu("Formato");
         createComponent("Negrita", format, "Poner en negrita texto seleccionado");
         createComponent("Cursiva", format, "Poner en cursiva texto seleccionado");
         createComponent("Subrayado", format, "Subrayar texto seleccionado");
-        tBar.addSeparator();
+        toolBar.addSeparator();
         format.addSeparator();
         createComponent("Alinear Izquierda", format, "Alinear parrafo izquierda");
         createComponent("Alinear Derecha", format, "Alinear parrafo derecha");
         createComponent("Centrar", format, "Centrar parrafo");
         createComponent("Justificar", format, "Justificar parrafo");
-        tBar.addSeparator();
+        toolBar.addSeparator();
 
         JMenu others = new JMenu("Otros");
         createComponent("Cerrar", others, "Cierra el programa");
         createComponent("Ayuda", others, "Informacion del programa");
-        tBar.addSeparator();
+        toolBar.addSeparator();
 
-        mBar = new JMenuBar();
-        mBar.add(file);
-        mBar.add(edit);
-        mBar.add(format);
-        mBar.add(others);
+        menuBar = new JMenuBar();
+        menuBar.add(file);
+        menuBar.add(edit);
+        menuBar.add(format);
+        menuBar.add(others);
 
         // SCROLLING TEXT AREA ------------------------------------
         text = new JTextPane();
-        text.setComponentPopupMenu(pMenu);
+        text.setComponentPopupMenu(popMenu);
         sPanel = new JScrollPane(text);
 
         // STRUCTURING THE FRAME ----------------------------------
         setLayout(new BorderLayout());
-        setJMenuBar(mBar);
+        setJMenuBar(menuBar);
         add(sPanel, BorderLayout.CENTER);
-        add(tBar, BorderLayout.NORTH);
+        add(toolBar, BorderLayout.NORTH);
 
         // --------------------------------------------------------
         setSize(500, 500);
@@ -98,7 +99,7 @@ class Notes extends JFrame implements ActionListener{
     // COMPONENT CREATOR ===============================================================
     private void createComponent ( String s, JMenu m, String tooltip){
 
-        ImageIcon icon = new ImageIcon("img/"+"placeholder"+".png");
+        ImageIcon icon = new ImageIcon("img/"+s+".png");
         ActionListener action = this;
 
         // Special cases --------------------------------------------------------------
@@ -120,7 +121,7 @@ class Notes extends JFrame implements ActionListener{
         JButton btn = new JButton(icon);
         btn.addActionListener(action);
         btn.setToolTipText(tooltip);
-        tBar.add(btn);
+        toolBar.add(btn);
 
         // Popup Menu ---------------------------------------------------------------
         if (s.equals("Negrita") || s.equals("Cursiva") || s.equals("Subrayado")|| 
@@ -128,7 +129,7 @@ class Notes extends JFrame implements ActionListener{
             JMenuItem popItem = new JMenuItem(s, icon);
             popItem.addActionListener(action);
             popItem.setToolTipText(tooltip);
-            pMenu.add(popItem);
+            popMenu.add(popItem);
         }
     }
 
@@ -142,6 +143,7 @@ class Notes extends JFrame implements ActionListener{
         if (r == JFileChooser.APPROVE_OPTION) {               
             File fi = new File(j.getSelectedFile().getAbsolutePath());
             try {
+                // File reader
                 String sReader = "", sText = "";
                 FileReader fr = new FileReader(fi);
                 BufferedReader br = new BufferedReader(fr);
@@ -187,6 +189,7 @@ class Notes extends JFrame implements ActionListener{
                 }
             } else {//User cancels
                 JOptionPane.showMessageDialog(this, "Operacion cancelada");
+                // Call calling methods to allow other option to be selected.
                 if (s.equals("close")) close();
                 else if ( s.equals("newDoc")) newDoc();
             }
@@ -231,7 +234,7 @@ class Notes extends JFrame implements ActionListener{
         // Edit --------------------------------------------------------------------------
         else if (ac.equals("Cortar") || s.contains("Cortar")) {text.cut();}
         else if (ac.equals("Copiar") || s.contains("Copiar")) {text.copy();}
-        else if (ac.equals("Pegar") || s.contains("Pegar"))   {text.paste();}
+        else if (ac.equals("Pegar")  ||  s.contains("Pegar")) {text.paste();}
 
         // Others --------------------------------------------------------------------------
         else if(ac.equals("Cerrar") || s.contains("Cerrar")) {close();}
