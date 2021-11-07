@@ -4,9 +4,8 @@ import javax.swing.*;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledEditorKit;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.*;
-import java.awt.Font;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -60,6 +59,13 @@ class Notes extends JFrame implements ActionListener{
         createComponent("Justificar", format, "Justificar parrafo");
         toolBar.addSeparator();
 
+        // FONTS & SIZE ------------------------------------------
+        JComboBox<String> fonts= new JComboBox<>();
+        createComboBox(fonts, "font");        
+        JComboBox<String> fontSize = new JComboBox<>();
+        createComboBox(fontSize, "size");
+        // -----------------------------------------------------------------
+
         JMenu others = new JMenu("Otros");
         createComponent("Cerrar", others, "Cierra el programa");
         createComponent("Ayuda", others, "Informacion del programa");
@@ -91,8 +97,8 @@ class Notes extends JFrame implements ActionListener{
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 close();
-                }
-            });
+            }
+        });
     }
 
     // =================================================================================
@@ -131,6 +137,32 @@ class Notes extends JFrame implements ActionListener{
             popItem.setToolTipText(tooltip);
             popMenu.add(popItem);
         }
+    }
+
+    private void createComboBox (JComboBox<String> fPropertie, String s){
+        // fPropertie.setEditable(true);
+        if (s.equals("font")){ 
+            fPropertie.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+            String [] sisFonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+            for(String f:sisFonts) {
+                fPropertie.addItem(f);
+            }
+            fPropertie.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+
+            fPropertie.addActionListener(e -> {        
+                Action fontAction = new StyledEditorKit.FontFamilyAction("",(String) fPropertie.getSelectedItem());
+                fontAction.actionPerformed(e);
+            });
+        } else {
+            for(int i = 12; i < 72; i += 2) {fPropertie.addItem(String.valueOf (i));}
+            fPropertie.addActionListener(e -> {  
+                Action fontAction = new StyledEditorKit.FontSizeAction("", Integer.parseInt(fPropertie.getSelectedItem().toString()));
+                fontAction.actionPerformed(e);
+            });
+        }
+        
+        toolBar.add(fPropertie);
+        toolBar.addSeparator();
     }
 
     // OPEN ============================================================================
