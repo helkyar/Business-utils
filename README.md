@@ -1,6 +1,6 @@
 # TPV
 
-##Descripción
+## Descripción
 
 Esta aplicación esta diseñada para la gestión de comandas y 
 generación de tickets. Su interfaz intuitiva permitirá la
@@ -9,7 +9,7 @@ rápida adaptación de sus empleados con mínimas instrucciones.
 Entre otras características destaca la edición de ticket mediante
 el teclado numérico incorporado y el aparcado de tickets.
 
-##Ejecución del programa
+## Ejecución del programa
 
 **Windows**
 ->Debe colocar el archivo en la carpeta deseada.
