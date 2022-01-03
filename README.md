@@ -26,5 +26,5 @@ directorio del archivo y ejecutando el comando:
 y ejecutando el comando: "sudo java -jar TPV.jar".
 
 ## Diseño
-![image](https://github.com/helkyar/Selling-terminal/blob/main/tpvtc.png)  
 ![image](https://github.com/helkyar/Selling-terminal/blob/main/tpv.png)  
+![image](https://github.com/helkyar/Selling-terminal/blob/main/tpvtc.png)  
