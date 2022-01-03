@@ -24,3 +24,7 @@ directorio del archivo y ejecutando el comando:
 (si tiene los permisos adecuados). Si lo desea también puede
  ejecutarlo desde consola accediendo al directorio del archivo 
 y ejecutando el comando: "sudo java -jar TPV.jar".
+
+## Diseño
+![image](https://github.com/helkyar/Selling-terminal/blob/main/tpvtc.png)  
+![image](https://github.com/helkyar/Selling-terminal/blob/main/tpv.png)  
