@@ -25,6 +25,13 @@ directorio del archivo y ejecutando el comando:
  ejecutarlo desde consola accediendo al directorio del archivo 
 y ejecutando el comando: "sudo java -jar TPV.jar".
 
+## Errores conocidos
+A día (30/01/2022) no hay fallos conocidos.
+
 ## Diseño
 ![image](https://github.com/helkyar/Selling-terminal/blob/main/tpv.png)  
 ![image](https://github.com/helkyar/Selling-terminal/blob/main/tpvtc.png)  
+
+## Siguientes pasos
+Implementación con base de datos de productos
+Generación dinámica de menús según tablas y productos
